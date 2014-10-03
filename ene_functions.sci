@@ -1,4 +1,4 @@
-function A=log_read(filename)
+function A=ene_log_read(filename)
     T=csvRead(filename);
     M=[T(:,1:5),T(:,8:12),T(:,14:16)];
     T=zeros(size(M,'r'),7)
@@ -12,7 +12,7 @@ function A=log_read(filename)
     A=[T;%nan,%nan,nanmean(T(:,3)),%nan,%nan,nanmean(T(:,6)),nanmean(T(:,7));%nan,nansum(T(:,2)),%nan,nansum(T(:,4)),nansum(T(:,5)),%nan,%nan]
 endfunction
 
-function log_write(M,filename)
+function ene_log_write(M,filename)
     T=string(M);
     T=['時間','傾斜面日射量','気温','PV電力量','INV出力電力量','INV出力電流','INV出力電圧';T];
     T(size(T,'r')-1,1)='平均値';
@@ -21,7 +21,7 @@ function log_write(M,filename)
     csvWrite(T,filename);
 endfunction
 
-function log_to_h()
+function ene_log_to_csv()
     cd('data');
     DirectoryArray=ls();//201205,201206..
     for i=1:size(DirectoryArray,'r')
