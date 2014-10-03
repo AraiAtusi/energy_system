@@ -38,3 +38,29 @@ function log2h()
     end
 endfunction
 
+function log2d()
+    cd('data');
+    A=gsort(ls(),'lr','i');//(string)201205,201206..
+    B=[int(A)-floor(int(A)/100)*100]//(int)1205,1206...
+    for i=1:size(A,'r')
+        
+    end
+        
+
+        
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
