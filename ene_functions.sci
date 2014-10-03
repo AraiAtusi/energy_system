@@ -24,6 +24,7 @@ endfunction
 function ene_log_to_csv()
     cd('data');
     DirectoryArray=ls();//201205,201206..
+    mkdir('temp');
     for i=1:size(DirectoryArray,'r')
         FilenameArray=ls(DirectoryArray(i));//11111DMS12050101.log,11111DMS...
         for j=1:size(FilenameArray,'r')
@@ -32,7 +33,7 @@ function ene_log_to_csv()
                 writeFilename="20"+strsubst(strsubst(FilenameArray(j),'11111DMS',''),'log','csv');
 
                 T=ene_log_read(readFilename);
-                ene_log_write(T,writeFilename)
+                ene_log_write(T,'temp/'+writeFilename)
             end
         end
     end
