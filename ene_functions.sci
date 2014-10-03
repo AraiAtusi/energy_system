@@ -29,12 +29,15 @@ function ene_log_to_csv()
         for j=1:size(FilenameArray,'r')
             if strindex(FilenameArray(j),'DMS') then
                 readFilename=DirectoryArray(i)+'/'+FilenameArray(j);
-                writeFilename=strsubst(strsubst(B(j),'11111DMS',''),'log','csv');
+                writeFilename="20"+strsubst(strsubst(FilenameArray(j),'11111DMS',''),'log','csv');
 
-                T=log_read(readFilename);
-                log_write(T,writeFilename)
+                T=ene_log_read(readFilename);
+                ene_log_write(T,writeFilename)
             end
         end
     end
+    cd("..")
 endfunction
 
+function ene_join_hour_to_day()
+endfunction
