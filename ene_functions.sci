@@ -23,16 +23,16 @@ endfunction
 
 function log_to_h()
     cd('data');
-    A=ls();//201205,201206..
-    for i=1:size(A,'r')
-        B=ls(A(i));//11111DMS12050101.log,11111DMS...
-        for j=1:size(B,'r')
-            if strindex(B(j),'DMS') then
-                fr=A(i)+'/'+B(j);
-                fw=strsubst(strsubst(B(j),'11111DMS',''),'log','csv');
-                
-                T=log_read(fr);
-                log_write(T,fw)
+    DirectoryArray=ls();//201205,201206..
+    for i=1:size(DirectoryArray,'r')
+        FilenameArray=ls(DirectoryArray(i));//11111DMS12050101.log,11111DMS...
+        for j=1:size(FilenameArray,'r')
+            if strindex(FilenameArray(j),'DMS') then
+                readFilename=DirectoryArray(i)+'/'+FilenameArray(j);
+                writeFilename=strsubst(strsubst(B(j),'11111DMS',''),'log','csv');
+
+                T=log_read(readFilename);
+                log_write(T,writeFilename)
             end
         end
     end
